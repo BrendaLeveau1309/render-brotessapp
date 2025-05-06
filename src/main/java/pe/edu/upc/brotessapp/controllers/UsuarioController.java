@@ -50,7 +50,7 @@ public class UsuarioController {
     //registrar nuevos usuarios ADMIN
     @PostMapping("/crear-nadmin")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public void crearadmin(@RequestBody UsuarioDTO dto) {
+    public void crearadmin(@RequestBody UsuarioDTO_registro dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto,Usuario.class);
         uS.insert(u);
@@ -65,7 +65,7 @@ public class UsuarioController {
         return dto;
     }
     @PutMapping("/modifica")
-    @PreAuthorize("hasAuthority('USUARIO')or hasAuthority('ADMIN') or hasAuthority('AUTORIDAD')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody UsuarioDTO_registro dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
@@ -89,6 +89,7 @@ public class UsuarioController {
             return dto;
         }).collect(Collectors.toList());
     }
+
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {

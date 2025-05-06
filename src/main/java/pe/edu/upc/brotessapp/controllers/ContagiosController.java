@@ -32,7 +32,7 @@ public class ContagiosController {
     }
 
     @PostMapping("/inserta")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('PERSONA')or hasAuthority('ADMIN')")
     public void insertar(@RequestBody ContagiosDTO dto) {
         ModelMapper m = new ModelMapper();
         Contagios c = m.map(dto,Contagios.class);
@@ -61,7 +61,7 @@ public class ContagiosController {
     }
 
     @GetMapping("/cantidad-contagios-zona")
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
     public List<Q_T2DTO> cantidadContagiosPorZona() {
         List<String[]> data = cS.cantidadContagiosPorZona();
         return data.stream().map(fila -> {

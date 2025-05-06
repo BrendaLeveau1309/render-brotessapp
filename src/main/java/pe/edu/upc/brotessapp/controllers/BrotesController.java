@@ -22,7 +22,7 @@ public class BrotesController {
     @Autowired
     private IBrotesService bS;
 
-    @GetMapping("/lista-actualizarBrotes")
+    @GetMapping("/lista")
     @PreAuthorize("hasAuthority('ADMIN')")
     public List<BrotesDTO> listar() {
 

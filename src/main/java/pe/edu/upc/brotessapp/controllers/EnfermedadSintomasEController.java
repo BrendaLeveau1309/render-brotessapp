@@ -43,6 +43,7 @@ public class EnfermedadSintomasEController {
         EnfermedadSintomasEDTO dto = m.map(eS.listId(id), EnfermedadSintomasEDTO.class);
         return dto;
     }
+
     @PutMapping("/modifica")
     @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
     public void modificar(@RequestBody EnfermedadSintomasEDTO dto) {

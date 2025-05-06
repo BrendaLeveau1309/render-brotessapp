@@ -80,7 +80,7 @@ public class NotificacionController {
         return dtoLista;
     }
 
-    @GetMapping("/lista-cadausuario") //para usuario
+    @GetMapping("/lista-cadapersona") //para usuario
     @PreAuthorize("hasAuthority('PERSONA')")
     public List<NotificacionPerDTO> listar(@AuthenticationPrincipal UserDetails userD) {
         List<NotificacionPerDTO> dtoLista=new ArrayList<>();
