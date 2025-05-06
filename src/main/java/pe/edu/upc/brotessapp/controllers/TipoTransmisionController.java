@@ -22,7 +22,7 @@ public class TipoTransmisionController {
 
     @GetMapping("/lista")
     @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
-    public List<TipoTransmisionDTO> listartiposE() {
+    public List<TipoTransmisionDTO> listartiposT() {
         return tS.list().stream().map(t-> {//expresion lambda para cada elemento - transformacion
             ModelMapper m = new ModelMapper();
             return m.map(t, TipoTransmisionDTO.class);
@@ -52,11 +52,10 @@ public class TipoTransmisionController {
         tS.update(z);
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         tS.delete(id);
     }
-
 
     @GetMapping("/CantidadContagios_TipoTransmision")
     @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")

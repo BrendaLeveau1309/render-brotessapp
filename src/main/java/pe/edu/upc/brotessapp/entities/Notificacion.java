@@ -13,7 +13,7 @@ public class Notificacion {
 
     @Column(name = "titulo", nullable = false,length =50)
     private String titulo;
-    @Column(name = "contenido", nullable = false,length =200)
+    @Column(name = "contenido", nullable = false,length =300)
     private String contenido;
     @Column(name = "estado", nullable = false,length =20)
     private String estado;

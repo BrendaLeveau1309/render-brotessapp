@@ -28,4 +28,22 @@ public interface IBrotesRepository extends JpaRepository<Brotes, Integer> {
             "ORDER BY z.provincia", nativeQuery = true)
     List<String[]> cantidadBrotesTotalesPorZona(@Param("anio") int anio, @Param("mes") int mes);
 
+    //automat
+    @Query(value = "SELECT COUNT(*) FROM contagios c " +
+            "JOIN zona z ON c.id_zona = z.id_zona " +
+            "WHERE c.id_enfermedad = :idEnfermedad " +
+            "AND z.provincia = :provincia " +
+            "AND z.distrito = :distrito", nativeQuery = true)
+    public Integer contagiosporzonayenfermedad(@Param("idEnfermedad") int idEnfermedad, @Param("provincia") String provincia, @Param("distrito") String distrito);
+
+    @Query(value = "SELECT COUNT(*) FROM brotes b " +
+            "JOIN contagios c ON b.id_contagio = c.id_contagio " +
+            "JOIN zona z ON c.id_zona = z.id_zona " +
+            "WHERE c.id_enfermedad = :idEnfermedad " +
+            "AND z.provincia = :provincia " +
+            "AND z.distrito = :distrito", nativeQuery = true)
+    public Integer existeBroteEnZona(@Param("idEnfermedad") int idEnfermedad, @Param("provincia") String provincia, @Param("distrito") String distrito);
+
+
+
 }

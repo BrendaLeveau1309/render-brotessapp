@@ -1,9 +1,9 @@
 package pe.edu.upc.brotessapp.dtos;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import pe.edu.upc.brotessapp.entities.Rol;
 import pe.edu.upc.brotessapp.entities.Zona;
 
-import java.util.List;
 
 
 public class UsuarioDTO {
@@ -14,7 +14,9 @@ public class UsuarioDTO {
     private String apellido;
     private Boolean enabled;
     private String username;
+    @JsonIgnore
     private String password;
+
     private Zona zona;
 
     public int getIdUsuario() {

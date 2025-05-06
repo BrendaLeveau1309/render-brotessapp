@@ -62,7 +62,7 @@ public class WebSecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req -> req
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll() // Permitir acceso público a Swagger
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**","usuarios/registro-usuarios","roles/lista", "zonas/inserta","zonas/lista-sa").permitAll()
                         .requestMatchers(antMatcher("/login")).permitAll()
                         .anyRequest().authenticated()
                 )

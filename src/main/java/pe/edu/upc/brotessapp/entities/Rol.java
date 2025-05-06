@@ -3,8 +3,10 @@ package pe.edu.upc.brotessapp.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "Rol", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "rol"})})
+@Table(name = "Rol")
 public class Rol {
 
     @Id
@@ -14,17 +16,13 @@ public class Rol {
     @Column(name = "rol",nullable = false, length = 20)
     private String rol;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
-    private Usuario usuario;
 
     public Rol() {
     }
 
-    public Rol(int idRol, String rol, Usuario usuario) {
+    public Rol(int idRol, String rol) {
         this.idRol = idRol;
         this.rol = rol;
-        this.usuario = usuario;
     }
 
     public int getIdRol() {
@@ -41,14 +39,6 @@ public class Rol {
 
     public void setRol(String rol) {
         this.rol = rol;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 }
 

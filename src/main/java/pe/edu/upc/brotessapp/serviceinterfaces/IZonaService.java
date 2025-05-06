@@ -10,4 +10,5 @@ public interface IZonaService {
     public Zona listId(int id);
     public void update(Zona z);
     public void delete(int id);
+    public List<Zona> zonasinAsig();
 }

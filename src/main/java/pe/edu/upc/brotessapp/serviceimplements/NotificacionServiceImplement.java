@@ -19,10 +19,10 @@ public class NotificacionServiceImplement implements INotificacionService {
         return nR.findAll();
     }
 
-    @Override
-    public void insert(Notificacion u) {
-        nR.save(u);
-    }
+//    @Override
+//    public void insert(Notificacion u) {
+//        nR.save(u);
+//    }
 
     @Override
     public Notificacion listId(int id) {
@@ -42,5 +42,10 @@ public class NotificacionServiceImplement implements INotificacionService {
     @Override
     public List<String[]> UsuariosxNotificacion() {
         return nR.quantityUserbyNotif();
+    }
+
+    @Override
+    public List<String[]> notifByUsername(String username) {
+        return nR.notifByUsername(username);
     }
 }

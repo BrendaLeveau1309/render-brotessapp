@@ -37,4 +37,10 @@ public class ZonaServiceImplement implements IZonaService {
     public void delete(int id) {
     zR.deleteById(id);
     }
+
+    @Override
+    public List<Zona> zonasinAsig() {
+        return zR.Zonasinasig();
+    }
+
 }

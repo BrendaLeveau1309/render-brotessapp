@@ -11,6 +11,7 @@ import pe.edu.upc.brotessapp.entities.Usuario;
 import pe.edu.upc.brotessapp.repositories.IUsuarioRepository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -19,7 +20,7 @@ public class JwtUserDetailsService implements UserDetailsService {
     @Autowired
     private IUsuarioRepository repo;
 
-    //cargar pero ahora ya no por username, por email?
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario user = repo.findOneByUsername(username);
@@ -28,13 +29,9 @@ public class JwtUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException(String.format("User not exists", username));
         }
 
-        List<GrantedAuthority> roles = new ArrayList<>();
+        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRol().getRol());
 
-        user.getRoles().forEach(rol -> {
-            roles.add(new SimpleGrantedAuthority(rol.getRol()));
-        });
-
-        UserDetails ud = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getEnabled(), true, true, true, roles);
+        UserDetails ud = new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), user.getEnabled(), true, true, true, Collections.singletonList(authority));
 
         return ud;
     }

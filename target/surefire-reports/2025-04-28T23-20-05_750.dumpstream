@@ -1,5 +1,0 @@
-# Created at 2025-04-28T23:20:06.148
-Boot Manifest-JAR contains absolute paths in classpath 'D:\UPC\C6\Arquitectura de App Web\Trabajo BrotessApp\v2\BrotessApp\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-

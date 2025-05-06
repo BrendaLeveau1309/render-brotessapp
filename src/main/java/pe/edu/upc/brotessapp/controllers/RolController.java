@@ -19,41 +19,43 @@ public class RolController {
     private IRolService rS;
 
     @GetMapping("/lista")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
-    public List<RolDTO> listarZonas() {
-        return rS.list().stream().map(z-> {//expresion lambda para cada elemento - transformacion
+    //@PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    public List<RolDTO> listarRol() {
+        return rS.getRolesPermitidos().stream().map(z-> { //se puede con filter
             ModelMapper m = new ModelMapper();
             return m.map(z, RolDTO.class);
-        }).collect(Collectors.toList()); //al final hace que toda la coleccion se tome como un tolist
+        }).collect(Collectors.toList());
     }
 
     @PostMapping("/inserta")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody RolDTO dto) {
         ModelMapper m = new ModelMapper();
         Rol z = m.map(dto, Rol.class);
         rS.insert(z);
     }
+
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public RolDTO buscarId(@PathVariable("id") int id) {
         ModelMapper m = new ModelMapper();
         //aqui se quiere mostrar lo que se puso en el DTO
         RolDTO dto = m.map(rS.listId(id), RolDTO.class);
         return dto;
     }
+
     @PutMapping("/modifica")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody RolDTO dto) {
         ModelMapper m = new ModelMapper();
         Rol z = m.map(dto, Rol.class);
         rS.update(z);
     }
+
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         rS.delete(id);
     }
-
 
 }

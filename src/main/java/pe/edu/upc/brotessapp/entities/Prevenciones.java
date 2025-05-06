@@ -16,18 +16,13 @@ public class Prevenciones {
     @JoinColumn(name = "idTipoE")
     private TipoEnfermedad tipoEnfermedad;
 
-    @ManyToOne
-    @JoinColumn(name = "idUsuario")
-    private Usuario usuario;
-
     public Prevenciones() {
     }
 
-    public Prevenciones(int idPrevencion, String descripcionPrevencion, TipoEnfermedad tipoEnfermedad, Usuario usuario) {
+    public Prevenciones(TipoEnfermedad tipoEnfermedad, int idPrevencion, String descripcionPrevencion) {
+        this.tipoEnfermedad = tipoEnfermedad;
         this.idPrevencion = idPrevencion;
         this.descripcionPrevencion = descripcionPrevencion;
-        this.tipoEnfermedad = tipoEnfermedad;
-        this.usuario = usuario;
     }
 
     public int getIdPrevencion() {
@@ -52,13 +47,5 @@ public class Prevenciones {
 
     public void setTipoEnfermedad(TipoEnfermedad tipoEnfermedad) {
         this.tipoEnfermedad = tipoEnfermedad;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 }

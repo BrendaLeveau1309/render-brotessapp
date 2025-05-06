@@ -22,32 +22,33 @@ public class BrotesController {
     @Autowired
     private IBrotesService bS;
 
-    @GetMapping("/lista")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @GetMapping("/lista-actualizarBrotes")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<BrotesDTO> listar() {
+
         return bS.list().stream().map(u->{
             ModelMapper m = new ModelMapper();
             return m.map(u,BrotesDTO.class);
         }).collect(Collectors.toList());
     }
 
-    @PostMapping("/inserta")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
-    public void insertar(@RequestBody BrotesDTO dto) {
-        ModelMapper m = new ModelMapper();
-        Brotes u = m.map(dto,Brotes.class);
-        bS.insert(u);
-    }
+//    @PostMapping("/inserta")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+//    public void insertar(@RequestBody BrotesDTO dto) {
+//        ModelMapper m = new ModelMapper();
+//        Brotes u = m.map(dto,Brotes.class);
+//        bS.insert(u);
+//    }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public BrotesDTO buscarId(@PathVariable("id") int id) {
         ModelMapper m = new ModelMapper();
         BrotesDTO dto = m.map(bS.listId(id), BrotesDTO.class);
         return dto;
     }
     @PutMapping("/modifica")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody BrotesDTO dto) {
         ModelMapper m = new ModelMapper();
         Brotes u = m.map(dto, Brotes.class);
@@ -55,7 +56,7 @@ public class BrotesController {
     }
 
     @GetMapping("/fechasInicio")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<BrotesDTO> buscarFechaInicioBrotes(@RequestParam LocalDate fechaInicio) {
         return bS.buscarFechaInicioBrotes(fechaInicio).stream().map(y ->{
             ModelMapper m = new ModelMapper();
@@ -64,7 +65,7 @@ public class BrotesController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         bS.delete(id);
     }
@@ -77,7 +78,6 @@ public class BrotesController {
             @RequestParam("mes") int mes) {
 
         List<Q_B2DTO> dtoLista = new ArrayList<>();
-
         List<String[]> filas = bS.cantidadBrotesTotalesPorZona(anio, mes);
 
         for (String[] columna : filas) {

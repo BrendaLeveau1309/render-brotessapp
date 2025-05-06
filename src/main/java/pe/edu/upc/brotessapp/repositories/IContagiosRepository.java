@@ -2,6 +2,7 @@ package pe.edu.upc.brotessapp.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.brotessapp.entities.Contagios;
 
@@ -36,4 +37,21 @@ public interface IContagiosRepository extends JpaRepository<Contagios, Integer> 
             "ORDER BY \n" +
             "    cantidad_brotes_activos DESC;",nativeQuery = true)
     public List<String[]> quantityBrotesByZona();
+
+
+    //automat-b
+    @Query(value = "SELECT * FROM contagios \n" +
+            "WHERE id_enfermedad = :idEnfermedad \n" +
+            "AND id_zona = (SELECT id_zona FROM zona WHERE provincia = :provincia AND distrito = :distrito LIMIT 1) \n" +
+            "ORDER BY fecha_contagio ASC\n" +
+            "LIMIT 1;", nativeQuery = true)
+    public Contagios PrimerContagioenzona(@Param("idEnfermedad") int idEnfermedad, @Param("provincia") String provincia, @Param("distrito") String distrito);
+
+    @Query(value = "SELECT c.id_contagio, c.id_enfermedad, z.provincia, z.distrito " +
+            "FROM contagios c " +
+            "JOIN zona z ON c.id_zona = z.id_zona " +
+            "ORDER BY c.id_contagio DESC LIMIT 1", nativeQuery = true)
+    public List<String[]> findUltimoContagioID();
+
+
 }

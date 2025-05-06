@@ -23,7 +23,7 @@ public class ContagiosController {
     private IContagiosService cS;
 
     @GetMapping("/lista")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ContagiosDTO> listar() {
         return cS.list().stream().map(u->{
             ModelMapper m = new ModelMapper();
@@ -32,35 +32,36 @@ public class ContagiosController {
     }
 
     @PostMapping("/inserta")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody ContagiosDTO dto) {
         ModelMapper m = new ModelMapper();
         Contagios c = m.map(dto,Contagios.class);
         cS.insert(c);
+
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ContagiosDTO buscarId(@PathVariable("id") int id) {
         ModelMapper m = new ModelMapper();
         ContagiosDTO dto = m.map(cS.listId(id), ContagiosDTO.class);
         return dto;
     }
     @PutMapping("/modifica")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void modificar(@RequestBody ContagiosDTO dto) {
         ModelMapper m = new ModelMapper();
         Contagios c = m.map(dto, Contagios.class);
         cS.update(c);
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         cS.delete(id);
     }
 
     @GetMapping("/cantidad-contagios-zona")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<Q_T2DTO> cantidadContagiosPorZona() {
         List<String[]> data = cS.cantidadContagiosPorZona();
         return data.stream().map(fila -> {

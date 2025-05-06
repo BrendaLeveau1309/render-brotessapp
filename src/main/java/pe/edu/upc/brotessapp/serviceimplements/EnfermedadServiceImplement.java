@@ -38,4 +38,14 @@ public class EnfermedadServiceImplement implements IEnfermedadService {
     public void delete(int id) {
         eR.deleteById(id);
     }
+
+    @Override
+    public List<String[]> cantidadEnfermedadesPorProvincia() {
+        return eR.cantidadEnfermedadesPorProvincia();
+    }
+
+    @Override
+    public List<String[]> cantidadEnfermedadesPorTransmisionEnProvincia(String provincia) {
+        return eR.cantidadEnfermedadesPorTransmisionEnProvincia(provincia);
+    }
 }

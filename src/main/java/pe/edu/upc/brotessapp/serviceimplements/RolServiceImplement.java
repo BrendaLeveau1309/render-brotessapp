@@ -38,4 +38,15 @@ public class RolServiceImplement implements IRolService {
     public void delete(int id) {
     rR.deleteById(id);
     }
+
+    @Override
+    public List<Rol> getRolesPermitidos() {
+        return rR.getRolAble();
+    }
+
+    @Override
+    public Integer getidADMIN() {
+        return rR.getidADMIN();
+    }
+
 }

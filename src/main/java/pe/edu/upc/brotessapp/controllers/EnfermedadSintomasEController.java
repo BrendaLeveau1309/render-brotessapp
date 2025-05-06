@@ -52,7 +52,7 @@ public class EnfermedadSintomasEController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         eS.delete(id);
     }

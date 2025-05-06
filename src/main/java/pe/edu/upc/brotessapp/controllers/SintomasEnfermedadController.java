@@ -50,10 +50,11 @@ public class SintomasEnfermedadController {
         sS.update(s);
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         sS.delete(id);
     }
+
 
 
 }

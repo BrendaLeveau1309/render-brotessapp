@@ -11,8 +11,6 @@ public class PrevencionesDTO {
 
     private TipoEnfermedad tipoEnfermedad;
 
-    private Usuario usuario;
-
     public int getIdPrevencion() {
         return idPrevencion;
     }
@@ -37,11 +35,4 @@ public class PrevencionesDTO {
         this.tipoEnfermedad = tipoEnfermedad;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

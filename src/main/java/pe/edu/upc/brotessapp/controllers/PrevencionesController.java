@@ -38,7 +38,7 @@ public class PrevencionesController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public PrevencionesDTO buscarId(@PathVariable("id") int id) {
         ModelMapper m = new ModelMapper();
         PrevencionesDTO dto = m.map(pS.listId(id), PrevencionesDTO.class);
@@ -52,7 +52,7 @@ public class PrevencionesController {
         pS.update(u);
     }
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         pS.delete(id);
     }
