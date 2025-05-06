@@ -40,10 +40,12 @@ public interface IContagiosRepository extends JpaRepository<Contagios, Integer> 
 
 
     //automat-b
-    @Query(value = "SELECT * FROM contagios \n" +
-            "WHERE id_enfermedad = :idEnfermedad \n" +
-            "AND id_zona = (SELECT id_zona FROM zona WHERE provincia = :provincia AND distrito = :distrito LIMIT 1) \n" +
-            "ORDER BY fecha_contagio ASC\n" +
+    @Query(value = "SELECT c.* FROM contagios c\n" +
+            "JOIN zona z_contagio ON c.id_zona = z_contagio.id_zona\n" +
+            "WHERE c.id_enfermedad = :idEnfermedad\n" +
+            "AND z_contagio.provincia = :provincia\n" +
+            "AND z_contagio.distrito = :distrito\n" +
+            "ORDER BY c.fecha_contagio ASC\n" +
             "LIMIT 1;", nativeQuery = true)
     public Contagios PrimerContagioenzona(@Param("idEnfermedad") int idEnfermedad, @Param("provincia") String provincia, @Param("distrito") String distrito);
 
