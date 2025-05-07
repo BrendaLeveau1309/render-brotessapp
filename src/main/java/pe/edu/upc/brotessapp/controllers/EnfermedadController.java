@@ -59,39 +59,39 @@ public class EnfermedadController {
         Enfermedad u = m.map(dto, Enfermedad.class);
         eS.update(u);
     }
-    //Q1D
-    @GetMapping("/cantidad-enfermedades-provincia")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
-    public List<Q_D1DTO> cantidadEnfermedadesPorProvincia() {
-        List<String[]> data = eS.cantidadEnfermedadesPorProvincia();
-        List<Q_D1DTO> dtoList = new ArrayList<>();
-
-        for (String[] fila : data) {
-            Q_D1DTO dto = new Q_D1DTO();
-            dto.setProvincia(fila[0]);
-            dto.setCantidad(Integer.parseInt(fila[1]));
-            dtoList.add(dto);
-        }
-
-        return dtoList;
-    }
-    //Q2D
-    @GetMapping("/cantidad-transmision-provincia/{provincia}")
-    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
-    public List<Q_D2DTO> cantidadPorTransmisionProvincia(@PathVariable String provincia) {
-        List<String[]> data = eS.cantidadEnfermedadesPorTransmisionEnProvincia(provincia);
-        List<Q_D2DTO> dtoList = new ArrayList<>();
-
-        for (String[] fila : data) {
-            Q_D2DTO dto = new Q_D2DTO();
-            dto.setNombreEnfermedad(fila[0]);
-            dto.setTransmision(fila[1]);
-            dto.setProvincia(fila[2]);
-            dto.setCantidad(Integer.parseInt(fila[3]));
-            dtoList.add(dto);
-        }
-
-        return dtoList;
-    }
+//    //Q1D
+//    @GetMapping("/cantidad-enfermedades-provincia")
+//    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+//    public List<Q_D1DTO> cantidadEnfermedadesPorProvincia() {
+//        List<String[]> data = eS.cantidadEnfermedadesPorProvincia();
+//        List<Q_D1DTO> dtoList = new ArrayList<>();
+//
+//        for (String[] fila : data) {
+//            Q_D1DTO dto = new Q_D1DTO();
+//            dto.setProvincia(fila[0]);
+//            dto.setCantidad(Integer.parseInt(fila[1]));
+//            dtoList.add(dto);
+//        }
+//
+//        return dtoList;
+//    }
+//    //Q2D
+//    @GetMapping("/cantidad-transmision-provincia/{provincia}")
+//    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
+//    public List<Q_D2DTO> cantidadPorTransmisionProvincia(@PathVariable String provincia) {
+//        List<String[]> data = eS.cantidadEnfermedadesPorTransmisionEnProvincia(provincia);
+//        List<Q_D2DTO> dtoList = new ArrayList<>();
+//
+//        for (String[] fila : data) {
+//            Q_D2DTO dto = new Q_D2DTO();
+//            dto.setNombreEnfermedad(fila[0]);
+//            dto.setTransmision(fila[1]);
+//            dto.setProvincia(fila[2]);
+//            dto.setCantidad(Integer.parseInt(fila[3]));
+//            dtoList.add(dto);
+//        }
+//
+//        return dtoList;
+//    }
 
 }
