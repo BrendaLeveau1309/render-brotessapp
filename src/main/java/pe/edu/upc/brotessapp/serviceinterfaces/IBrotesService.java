@@ -11,7 +11,7 @@ public interface IBrotesService {
 //    public void insert(Brotes x);
     public Brotes listId(int id);
     public void update(Brotes x);
-    public void delete(int id);
+//    public void delete(int id);
 
     public List<Brotes> buscarFechaInicioBrotes(LocalDate fechaInicio);
     public List<String[]> cantidadBrotesTotalesPorZona(int anio, int mes);

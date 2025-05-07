@@ -9,7 +9,7 @@ public interface IRolService {
     public void insert(Rol r);
     public Rol listId(int id);
     public void update(Rol r);
-    public void delete(int id);
+//    public void delete(int id);
     public List<Rol> getRolesPermitidos();
     public Integer getidADMIN();
 }

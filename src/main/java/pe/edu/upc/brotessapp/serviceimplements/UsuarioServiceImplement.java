@@ -35,6 +35,7 @@ public class UsuarioServiceImplement implements IUsuarioService { //modificacion
 
     @Override
     public void update(Usuario u) {
+        u.setPassword(passwordEncoder.encode(u.getPassword()));
         uR.save(u);
     }
 

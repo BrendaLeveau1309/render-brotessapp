@@ -52,10 +52,10 @@ public class RolController {
         rS.update(z);
     }
 
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public void eliminar(@PathVariable("id") int id) {
-        rS.delete(id);
-    }
+//    @DeleteMapping("/{id}")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+//    public void eliminar(@PathVariable("id") int id) {
+//        rS.delete(id);
+//    }
 
 }

@@ -44,10 +44,10 @@ public class BrotesServiceImplement implements IBrotesService {
         bR.save(u);
     }
 
-    @Override
-    public void delete(int id) {
-        bR.deleteById(id);
-    }
+//    @Override
+//    public void delete(int id) {
+//        bR.deleteById(id);
+//    }
 
     @Override
     public List<Brotes> buscarFechaInicioBrotes(LocalDate fechaInicio) {

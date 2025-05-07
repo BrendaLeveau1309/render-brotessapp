@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.brotessapp.dtos.Q_T1DTO;
 import pe.edu.upc.brotessapp.dtos.UsuarioDTO;
+import pe.edu.upc.brotessapp.dtos.UsuarioDTO_modi;
 import pe.edu.upc.brotessapp.dtos.UsuarioDTO_registro;
 import pe.edu.upc.brotessapp.entities.Usuario;
 import pe.edu.upc.brotessapp.serviceinterfaces.IRolService;
@@ -47,14 +48,6 @@ public class UsuarioController {
         uS.insert(u);
     }
 
-    //registrar nuevos usuarios ADMIN
-    @PostMapping("/crear-nadmin")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public void crearadmin(@RequestBody UsuarioDTO_registro dto) {
-        ModelMapper m = new ModelMapper();
-        Usuario u = m.map(dto,Usuario.class);
-        uS.insert(u);
-    }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -66,7 +59,7 @@ public class UsuarioController {
     }
     @PutMapping("/modifica")
     @PreAuthorize("hasAuthority('ADMIN')")
-    public void modificar(@RequestBody UsuarioDTO_registro dto) {
+    public void modificar(@RequestBody UsuarioDTO_modi dto) {
         ModelMapper m = new ModelMapper();
         Usuario u = m.map(dto, Usuario.class);
 

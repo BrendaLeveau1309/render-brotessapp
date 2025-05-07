@@ -64,11 +64,11 @@ public class BrotesController {
         }).collect(Collectors.toList());
     }
 
-    @DeleteMapping("/{id}")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public void eliminar(@PathVariable("id") int id) {
-        bS.delete(id);
-    }
+//    @DeleteMapping("/{id}")
+//    @PreAuthorize("hasAuthority('ADMIN')")
+//    public void eliminar(@PathVariable("id") int id) {
+//        bS.delete(id);
+//    }
 
     //CON PARAMETROS
     @GetMapping("/cantidadBrotesTotales")

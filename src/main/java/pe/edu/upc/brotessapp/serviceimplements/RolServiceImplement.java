@@ -34,10 +34,10 @@ public class RolServiceImplement implements IRolService {
         rR.save(r);
     }
 
-    @Override
-    public void delete(int id) {
-    rR.deleteById(id);
-    }
+//    @Override
+//    public void delete(int id) {
+//    rR.deleteById(id);
+//    }
 
     @Override
     public List<Rol> getRolesPermitidos() {
