@@ -24,6 +24,7 @@ public class UsuarioServiceImplement implements IUsuarioService { //modificacion
 
     @Override
     public void insert(Usuario u) {
+
         u.setPassword(passwordEncoder.encode(u.getPassword())); //contra encriptada guardada
         uR.save(u);
     }

@@ -72,7 +72,7 @@ public class ContagiosController {
         }).collect(Collectors.toList());
     }
 
-    @GetMapping("/cantidades-Brotes-PorZona")
+    @GetMapping("/cantidades-BrotesActivos-PorZona")
     @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
     public List<Q_B1DTO> cantidad(){
         List<Q_B1DTO> dtoLista=new ArrayList<>();

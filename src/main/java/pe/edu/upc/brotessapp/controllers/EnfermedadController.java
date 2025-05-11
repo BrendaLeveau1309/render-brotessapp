@@ -59,17 +59,19 @@ public class EnfermedadController {
         Enfermedad u = m.map(dto, Enfermedad.class);
         eS.update(u);
     }
+
 //    //Q1D
 //    @GetMapping("/cantidad-enfermedades-provincia")
 //    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
-//    public List<Q_D1DTO> cantidadEnfermedadesPorProvincia() {
-//        List<String[]> data = eS.cantidadEnfermedadesPorProvincia();
+//    public List<Q_D1DTO> cantidadEnfermedadesPorProvincia(@RequestParam("provincia") String provincia) {
+//        List<String[]> data = eS.cantidadEnfermedadesPorProvincia(provincia);
 //        List<Q_D1DTO> dtoList = new ArrayList<>();
 //
 //        for (String[] fila : data) {
 //            Q_D1DTO dto = new Q_D1DTO();
-//            dto.setProvincia(fila[0]);
-//            dto.setCantidad(Integer.parseInt(fila[1]));
+//            dto.setProvincia((String) fila[0]);
+//            dto.setNombreEnfermedad((String) fila[1]);
+//            dto.setCantidadEnfermedades(Long.parseLong((String) fila[2]));
 //            dtoList.add(dto);
 //        }
 //
@@ -78,7 +80,7 @@ public class EnfermedadController {
 //    //Q2D
 //    @GetMapping("/cantidad-transmision-provincia/{provincia}")
 //    @PreAuthorize("hasAuthority('AUTORIDAD')or hasAuthority('ADMIN')")
-//    public List<Q_D2DTO> cantidadPorTransmisionProvincia(@PathVariable String provincia) {
+//    public List<Q_D2DTO> cantidadtransmision(@RequestParam("provincia") String provincia) {
 //        List<String[]> data = eS.cantidadEnfermedadesPorTransmisionEnProvincia(provincia);
 //        List<Q_D2DTO> dtoList = new ArrayList<>();
 //

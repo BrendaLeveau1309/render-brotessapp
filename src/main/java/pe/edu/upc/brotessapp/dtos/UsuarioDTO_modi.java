@@ -1,6 +1,5 @@
 package pe.edu.upc.brotessapp.dtos;
 
-
 import pe.edu.upc.brotessapp.entities.Rol;
 import pe.edu.upc.brotessapp.entities.Zona;
 
@@ -13,8 +12,15 @@ public class UsuarioDTO_modi {
     private String username;
     private String password;
     private Zona zona;
-
     private Rol rol;
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
 
     public int getIdUsuario() {
         return idUsuario;
@@ -72,11 +78,4 @@ public class UsuarioDTO_modi {
         this.zona = zona;
     }
 
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
 }

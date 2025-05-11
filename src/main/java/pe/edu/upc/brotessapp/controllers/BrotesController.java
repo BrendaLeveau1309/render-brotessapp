@@ -32,13 +32,6 @@ public class BrotesController {
         }).collect(Collectors.toList());
     }
 
-//    @PostMapping("/inserta")
-//    @PreAuthorize("hasAuthority('ADMIN')")
-//    public void insertar(@RequestBody BrotesDTO dto) {
-//        ModelMapper m = new ModelMapper();
-//        Brotes u = m.map(dto,Brotes.class);
-//        bS.insert(u);
-//    }
 
     @GetMapping("/{id}")
     @PreAuthorize("hasAuthority('ADMIN')")
@@ -64,11 +57,6 @@ public class BrotesController {
         }).collect(Collectors.toList());
     }
 
-//    @DeleteMapping("/{id}")
-//    @PreAuthorize("hasAuthority('ADMIN')")
-//    public void eliminar(@PathVariable("id") int id) {
-//        bS.delete(id);
-//    }
 
     //CON PARAMETROS
     @GetMapping("/cantidadBrotesTotales")

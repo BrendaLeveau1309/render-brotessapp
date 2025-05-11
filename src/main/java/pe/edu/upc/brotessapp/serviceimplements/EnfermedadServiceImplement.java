@@ -40,8 +40,8 @@ public class EnfermedadServiceImplement implements IEnfermedadService {
     }
 
     @Override
-    public List<String[]> cantidadEnfermedadesPorProvincia() {
-        return eR.cantidadEnfermedadesPorProvincia();
+    public List<String[]> cantidadEnfermedadesPorProvincia(String provincia) {
+        return eR.cantidadEnfermedadesPorProvincia(provincia);
     }
 
     @Override

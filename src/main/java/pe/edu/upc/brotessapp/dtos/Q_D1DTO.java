@@ -2,7 +2,8 @@ package pe.edu.upc.brotessapp.dtos;
 
 public class Q_D1DTO {
     private String provincia;
-    private int cantidad;
+    private String nombreEnfermedad;
+    private long cantidadEnfermedades;
 
     public String getProvincia() {
         return provincia;
@@ -12,11 +13,19 @@ public class Q_D1DTO {
         this.provincia = provincia;
     }
 
-    public int getCantidad() {
-        return cantidad;
+    public String getNombreEnfermedad() {
+        return nombreEnfermedad;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public void setNombreEnfermedad(String nombreEnfermedad) {
+        this.nombreEnfermedad = nombreEnfermedad;
+    }
+
+    public long getCantidadEnfermedades() {
+        return cantidadEnfermedades;
+    }
+
+    public void setCantidadEnfermedades(long cantidadEnfermedades) {
+        this.cantidadEnfermedades = cantidadEnfermedades;
     }
 }

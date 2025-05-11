@@ -41,6 +41,7 @@ pe\edu\upc\brotessapp\controllers\NotificacionController.class
 pe\edu\upc\brotessapp\repositories\IUsuarioRepository.class
 pe\edu\upc\brotessapp\repositories\INotificacionRepository.class
 pe\edu\upc\brotessapp\serviceimplements\NotificacionServiceImplement.class
+pe\edu\upc\brotessapp\dtos\UsuarioDTO_modi.class
 pe\edu\upc\brotessapp\entities\Usuario.class
 pe\edu\upc\brotessapp\dtos\BrotesAutoDTO.class
 pe\edu\upc\brotessapp\serviceinterfaces\INotificacionService.class

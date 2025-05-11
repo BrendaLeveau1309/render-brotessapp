@@ -11,6 +11,6 @@ public interface IEnfermedadService {
     public Enfermedad listId(int id);
     public void update(Enfermedad e);
     public void delete(int id);
-    List<String[]> cantidadEnfermedadesPorProvincia();
+    List<String[]> cantidadEnfermedadesPorProvincia(String provincia);
     List<String[]> cantidadEnfermedadesPorTransmisionEnProvincia(String provincia);
 }
